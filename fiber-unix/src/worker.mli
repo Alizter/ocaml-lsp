@@ -4,7 +4,8 @@ type 'work t
 (** [create ~do_no_raise] creates a worker with a task handler [do_no_raise].
     The worker will not handle an exception raised by the task handler, so
     [do_no_raise] is expected to not raise. *)
-val create : do_no_raise:('a -> unit) -> 'a t
+val create :
+  spawn_thread:((unit -> unit) -> unit) -> do_no_raise:('a -> unit) -> 'a t
 
 type task
 
